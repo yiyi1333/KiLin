@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC  "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.zzy.kilinlist.dao.UserMapper">
+    <resultMap id="userMap" type="edu.zzy.kilinlist.bean.User">
+        <result property="kilinUserId" column="kilin_user_id"/>
+        <result property="userName" column="user_name"/>
+        <result property="password" column="password"/>
+        <result property="email" column="email"/>
+        <result property="imageUrl" column="image_url"/>
+        <result property="roomCode" column="classroom_code"/>
+    </resultMap>
+    <insert id="insertUser">
+        insert into user
+        set email = #{email},
+        password = #{password},
+        user_name = 'admin',
+        image_url = 'https://yiyi-picture.oss-cn-hangzhou.aliyuncs.com/Typora/default.png'
+    </insert>
+
+    <update id="updateUserRoom">
+        update user set classroom_code = #{classroomCode} where email = #{email};
+    </update>
+
+    <select id="searchUser" resultMap="userMap">
+        select * from user where email = #{email}
+    </select>
+</mapper>

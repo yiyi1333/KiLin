@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC  "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.zzy.kilinlist.dao.ClassroomMapper">
+    <resultMap id="classroom" type="edu.zzy.kilinlist.bean.Classroom">
+        <result property="classroomName" column="classroom_name"/>
+        <result property="roomCode" column="room_code"/>
+    </resultMap>
+
+
+    <insert id="insertClassroom" parameterType="edu.zzy.kilinlist.bean.Classroom">
+        insert into classroom
+        values (#{roomCode}, #{classroomName});
+    </insert>
+    <select id="selectClassroom" resultMap="classroom">
+        select * from classroom
+        where room_code = #{code};
+    </select>
+    <select id="selectClassroomByemail" resultMap="classroom">
+        select classroom.classroom_name, classroom.room_code from classroom, user
+        where  user.email = #{email} and classroom.room_code = user.classroom_code;
+    </select>
+</mapper>

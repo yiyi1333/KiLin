@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org/DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--    <settings>-->
+    <!--        <setting name="logImpl" value="STDOUT_LOGGING"/>-->
+    <!--    </settings>-->
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+                <property name="url"
+                          value="jdbc:mysql://rm-bp10ju74719fp6g4emo.mysql.rds.aliyuncs.com:3306/kilinlist?useSSL=true&amp;useUnicode=true&amp;characterEncoding=utf8"/>
+                <property name="username" value="yiyi1333"/>
+                <property name="password" value="zzy@15712651279"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+        <mapper resource="edu/zzy/kilinlist/dao/FocusMapper.xml"/>
+        <mapper resource="edu/zzy/kilinlist/dao/UserMapper.xml"/>
+        <mapper resource="edu/zzy/kilinlist/dao/ClassroomMapper.xml"/>
+        <mapper resource="edu/zzy/kilinlist/dao/RankInfoMapper.xml"/>
+    </mappers>
+</configuration>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <constant name="struts.multipart.saveDir" value="E:/Temp" />
+    <constant name="struts.multipart.maxSize" value="1000000" />
+    <package name="strutsBean" extends="struts-default,json-default" namespace="/">
+        <action name="uploadFocus" class="edu.zzy.kilinlist.action.FocusAction" method="upLoadFocus">
+            <result name="success" type="json">
+                <param name="root">message</param>
+            </result>
+        </action>
+
+        <action name="uploadFocusList" class="edu.zzy.kilinlist.action.FocusAction" method="upLoadFocusList">
+            <result name="success" type="json">
+                <param name="root">message</param>
+            </result>
+        </action>
+
+<!--        <action name="login" class="edu.zzy.kilinlist.action.LoginAction" method="login">-->
+<!--            <result name="success" type="json">-->
+<!--                <param name="root">user</param>-->
+<!--            </result>-->
+<!--        </action>-->
+
+        <action name="createclassroom" class="edu.zzy.kilinlist.action.ClassroomAction" method="createClassroom">
+            <result name="success" type="json">
+                <param name="root">classroom</param>
+            </result>
+        </action>
+
+        <action name="getclassroom" class="edu.zzy.kilinlist.action.LoginAction" method="getUserClassroomCode">
+            <result name="success" type="json">
+                <param name="root">classroomCode</param>
+            </result>
+        </action>
+
+        <action name="joinclassroom" class="edu.zzy.kilinlist.action.ClassroomAction" method="joinClassroom">
+            <result name="success" type="json">
+                <param name="root">classroom</param>
+            </result>
+        </action>
+
+        <action name="getFocusRankInfo" class="edu.zzy.kilinlist.action.RankAction" method="getFocusRankInfo">
+            <result name="success" type="json">
+                <param name="root">rankInfos</param>
+            </result>
+        </action>
+
+        <action name="getClassroomRankInfo" class="edu.zzy.kilinlist.action.ClassroomAction" method="getClassroomRankInfo">
+            <result name="success" type="json">
+                <param name="root">classroomInfo</param>
+            </result>
+        </action>
+
+        <action name="verification" class="edu.zzy.kilinlist.action.LoginAction" method="verification">
+            <result name="success" type="json">
+                <param name="root">verificationCode</param>
+            </result>
+        </action>
+
+        <action name="register" class="edu.zzy.kilinlist.action.LoginAction" method="register">
+            <result name="success" type="json">
+                <param name="root">message</param>
+            </result>
+        </action>
+
+        <action name="login" class="edu.zzy.kilinlist.action.LoginAction" method="login">
+            <result name="success" type="json">
+                <param name="root">userResult</param>
+            </result>
+        </action>
+
+
+    </package>
+</struts>

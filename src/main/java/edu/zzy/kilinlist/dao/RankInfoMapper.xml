@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC  "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://www.mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.zzy.kilinlist.dao.RankInfoMapper">
+    <resultMap id="rankInfoMap" type="edu.zzy.kilinlist.bean.RankInfo">
+        <result property="rankNumber" column="rank_number"/>
+        <result property="userName" column="user_name"/>
+        <result property="totalFocusTime" column="total_focustime"/>
+        <result property="imageUrl" column="image_url"/>
+        <result property="email" column="email"/>
+    </resultMap>
+
+    <select id="getRankInfoList" resultMap="rankInfoMap">
+        select  RANK() over (order by sum(focustime) DESC ) as rank_number,  user.user_name ,sum(focustime) as total_focustime, image_url, email
+        from focus, user
+        where user.classroom_code = #{roomCode} and date = #{date} and focus.kilin_user_id = user.kilin_user_id
+        group by user.kilin_user_id
+        order by total_focustime DESC;
+    </select>
+</mapper>
